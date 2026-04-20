@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastery MCQ - Exam Prep (React & C++)</title>
+    <meta name="description" content="Prepare for your Semester Examinations with 300+ MCQ questions covering React and C++ Programming from basics to advanced topics.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">⚛️</span>
+                <h1>React<span>MCQ</span></h1>
+            </div>
+            <div class="header-actions">
+                <button id="theme-toggle" title="Toggle Theme">
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Subject Selection Screen -->
+        <section id="subject-screen" class="active">
+            <div class="hero">
+                <h2>Choose Your subject</h2>
+                <p>Select a topic to start your practice examination</p>
+            </div>
+            <div class="subject-grid">
+                <div class="subject-card glass" id="subject-react" data-subject="react">
+                    <div class="subject-icon">⚛️</div>
+                    <h3>React Mastery</h3>
+                    <p>Components, Hooks, Redux & More</p>
+                    <span class="q-count">300 Questions</span>
+                </div>
+                <div class="subject-card glass" id="subject-cpp" data-subject="cpp">
+                    <div class="subject-icon">📂</div>
+                    <h3>C++ Programming</h3>
+                    <p>OOPs, STL, Memory Management</p>
+                    <span class="q-count">300 Questions</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Configuration Screen (Previously Start Screen) -->
+        <section id="config-screen">
+            <div class="hero">
+                <h2 id="selected-subject-title">Master React</h2>
+                <p>Curated Questions across all semester topics</p>
+                <button id="back-to-subjects" class="back-link">← Change Subject</button>
+            </div>
+            <div class="settings-card glass">
+                <h3>Quiz Settings</h3>
+                <div class="setting-group">
+                    <label for="question-count">How many questions?</label>
+                    <div class="range-container">
+                        <input type="range" id="question-count" min="5" max="100" value="20" step="5">
+                        <span id="range-value">20</span>
+                    </div>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-val="10">10</button>
+                        <button class="preset-btn" data-val="20">20</button>
+                        <button class="preset-btn" data-val="50">50</button>
+                        <button class="preset-btn" data-val="100">100</button>
+                    </div>
+                </div>
+                <button id="start-quiz-btn" class="primary-btn">Start Examination</button>
+            </div>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="quiz-screen">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <div class="progress-bar-container">
+                        <div id="progress-bar" class="progress-bar"></div>
+                    </div>
+                    <div class="quiz-meta">
+                        <span id="question-number">Question 1 of 20</span>
+                        <div class="header-right">
+                            <div id="timer" class="timer">00:00</div>
+                            <button id="leave-btn" class="leave-btn" title="Exit Quiz">Leave</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="question-container" class="question-container">
+                    <h2 id="question-text">Question content will appear here...</h2>
+                    <div id="options-list" class="options-list">
+                        <!-- Options will be injected here -->
+                    </div>
+                </div>
+
+                <div class="quiz-footer">
+                    <button id="prev-btn" class="secondary-btn" disabled>Previous</button>
+                    <button id="next-btn" class="primary-btn">Next</button>
+                    <button id="finish-btn" class="primary-btn hidden">Finish Examination</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="results-screen">
+            <div class="results-card glass">
+                <div class="results-header">
+                    <div class="score-circle">
+                        <span id="final-score">0%</span>
+                    </div>
+                    <h2>Assessment Complete!</h2>
+                    <p id="result-message">Great job! You've completed your practice run.</p>
+                </div>
+                
+                <div class="results-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Questions</span>
+                        <span id="stat-total" class="stat-val">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Correct Answers</span>
+                        <span id="stat-correct" class="stat-val color-success">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Wrong Answers</span>
+                        <span id="stat-wrong" class="stat-val color-danger">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Time Taken</span>
+                        <span id="stat-time" class="stat-val">0m 0s</span>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="restart-btn" class="primary-btn">Try Again</button>
+                    <button id="review-btn" class="secondary-btn">Review Answers</button>
+                </div>
+            </div>
+
+            <div id="review-container" class="review-container hidden">
+                <h3>Review Results</h3>
+                <div id="review-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Semester Examination Prep. Designed for excellence.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
