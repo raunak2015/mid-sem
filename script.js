@@ -1,5 +1,6 @@
 import questions from './questions.js';
 import cppQuestions from './cpp_questions.js';
+import mongodbQuestions from './mongodb_questions.js';
 
 // State Management
 let activeQuestionSet = [];
@@ -60,6 +61,7 @@ function setupEventListeners() {
     // Subject Selection
     document.getElementById('subject-react').addEventListener('click', () => selectSubject('react'));
     document.getElementById('subject-cpp').addEventListener('click', () => selectSubject('cpp'));
+    document.getElementById('subject-mongodb').addEventListener('click', () => selectSubject('mongodb'));
 
     // Back to Subjects
     backToSubjectsBtn.addEventListener('click', () => {
@@ -119,9 +121,12 @@ function selectSubject(subject) {
     if (subject === 'react') {
         activeQuestionSet = questions;
         subjectTitle.textContent = 'Master React';
-    } else {
+    } else if (subject === 'cpp') {
         activeQuestionSet = cppQuestions;
         subjectTitle.textContent = 'C++ Programming';
+    } else if (subject === 'mongodb') {
+        activeQuestionSet = mongodbQuestions;
+        subjectTitle.textContent = 'MongoDB Database';
     }
 
     subjectScreen.classList.remove('active');
